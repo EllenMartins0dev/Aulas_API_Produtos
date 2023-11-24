@@ -21,14 +21,19 @@ import jakarta.persistence.Id;
         private String categoria;
         @Column(nullable = false)
         private double valor;
+        @Column(nullable = false, length = 100)
+        private String condicao;
 
 
-        // construtor com atrbutos
-    public Produto(String nome, String descricao, String categoria, double valor) {
+
+
+        // construtor com atributos
+    public Produto(String nome, String descricao, String categoria, double valor, String condicao) {
         this.nome = nome;
         this.descricao = descricao;
         this.categoria = categoria;
         this.valor = valor;
+        this.condicao = condicao;
     }
 
 
@@ -64,6 +69,14 @@ import jakarta.persistence.Id;
         this.nome = nome;
     }
 
+    public String getCondicao() {
+        return condicao;
+    }
+
+    public void setCondicao(String condicao) {
+        this.condicao = condicao;
+    }
+
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
@@ -76,3 +89,6 @@ import jakarta.persistence.Id;
         this.valor = valor;
     }
 }
+
+
+

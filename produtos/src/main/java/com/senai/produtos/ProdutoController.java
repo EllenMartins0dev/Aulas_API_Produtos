@@ -3,6 +3,7 @@ package com.senai.produtos;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @RestController
@@ -21,14 +22,31 @@ public class ProdutoController {
     }
 
     @GetMapping("searchName")
+    // endpoint: localhost:8080/api/produtos/searchName?nome=
     public List<Produto> getAllByName(@RequestParam("nome") String nome) {
         return this.pr.findByNomeContainingIgnoreCase(nome);
     }
 
     @GetMapping("searchDescription")
+    // endpoint: localhost:8080/api/produtos/searchDescription?descricao=
     public List<Produto> getAllByDescription(@RequestParam("descricao") String descricao) {
        return this.pr.findByDescricaoContainingIgnoreCase(descricao);
     }
+
+
+
+    @GetMapping("searchCategory")
+    // endpoint: localhost:8080/api/produtos/searchCategory?categoria=
+    public List<Produto> getAllByCategory(@RequestParam("categoria") String categoria) {
+        return this.pr.findByCategoriaContainingIgnoreCase(categoria);
+    }
+
+    @GetMapping("searchCondition")
+    // endpoint: localhost:8080/api/produtos/searchCondition?condicao=
+    public List<Produto> getAllByCondition(@RequestParam("condicao") String condicao) {
+        return this.pr.findByCondicaoContainingIgnoreCase(condicao);
+    }
+
 
 }
 
