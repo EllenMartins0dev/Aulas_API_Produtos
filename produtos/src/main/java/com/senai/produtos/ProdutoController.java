@@ -47,6 +47,14 @@ public class ProdutoController {
         return this.pr.findByCondicaoContainingIgnoreCase(condicao);
     }
 
+    @GetMapping("searchByPriceRange")
+    // endpoint: localhost:8080/api/produtos/searchByPriceRange?valMin=10.0&valMax=50.0
+    public List<Produto> searchByPriceRange(
+            @RequestParam("valMin") double valMin,
+            @RequestParam("valMax") double valMax) {
+        return this.pr.findByValorBetween(valMin, valMax);
+    }
+
 
 }
 
